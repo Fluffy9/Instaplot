@@ -18,12 +18,7 @@ You could purchase from another plot generating SaaS. Usually that would be run 
 Akash network is a decentralized cloud platform. Anyone can provide their own hardware to the network and receive income. **In theory**, it should have hardware you want in large quantity and at affordable prices (currently they aren't charging for bandwidth at least). We'll soon figure out if that's currently the case, or at least drive some more adoption. 😁
 
 # Architecture 
-The basic idea here is to have a server for the point of sale stuff, then spin up worker servers to do the hard work of plotting. The point of sale server can be very small and run constantly. Worker servers will need significantly more resources so it's best to only keep them for the short period of time that they are working + some time for the user to download the file. 
-
-NOTE: Akash doesn't offer any storage volumes. I had to compensate for that by combining a ton of stuff all in one docker image. Instead of writing a dockerfile, I just installed the stuff by hand and committed that to build the image. So that's why some docker images don't have docker files
-
-## Instaplot
-TODO
+There were some difficulties faced in this project so I had to make some adjustments to the plan. The main issue being that there are currently no providers on the network with the storage capacity to generate full Chia plots (need around 250gb storage to generate a 100gb plot). Instead, this project will only generate test plots, which are much faster and require very little space. Those are completely useless however. 
 
 ## Autoplotter
 The autoplotter_base image contains nginx, the MadMax plotter for plotting, chiapos for verification, npm and nodejs. The autoplotter image can be seen in the dockerfile. Emails are sent using Postmark in nodejs
@@ -40,5 +35,3 @@ Coming soon: Uploading plots directly to Sia Skynet after generation.
 5. Copy and paste the deploy.yaml content into the text area
 6. Click the submit button. Assuming you've got enough tokens, it should continue without error
 7. You should hopefully receive bids on your deployment. Choose one to accept and create a lease
-8. The application should now be live. 
-9. **You'll really need to monitor your Akash wallet**. Your wallet will be drained when someone purchases a plot. If you don't have enough, you could end up charging the person and they won't receive their plots. You also need to monitor the Instaplot UI deployment now and then. Top up the funds using the UI to ensure that the website is up for people to pay for plots.
