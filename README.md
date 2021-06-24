@@ -22,6 +22,7 @@ There were some difficulties faced in this project so I had to make some adjustm
 
 ## Autoplotter
 The autoplotter_base image contains nginx, the MadMax plotter for plotting, chiapos for verification, npm and nodejs. The autoplotter image can be seen in the dockerfile. Emails are sent using Postmark in nodejs
+
 This server generates a single plot, verifies that the plot is valid, and sends an email with the link to the file after it's successfully completed generating. It is able to restart the plotting process if the plot fails to generate or if the plot ends up being invalid. It will only re-attempt once. 
 
 Coming soon: Uploading plots directly to Sia Skynet after generation. 
